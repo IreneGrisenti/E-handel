@@ -10,6 +10,8 @@ def total_units(df: pd.DataFrame) -> int:
     return df["units"].sum()
 
 # Average order - AOV?
+def average_order(df: pd.DataFrame) -> float:
+    return round(total_revenue(df) / df["order_id"].nunique(), 2)
 
 # Revenue per category - What sells?
 # Top 3 categories
