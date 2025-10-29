@@ -14,9 +14,19 @@ def average_order(df: pd.DataFrame) -> float:
     return round(total_revenue(df) / df["order_id"].nunique(), 2)
 
 # Revenue per category - What sells?
-# Top 3 categories
+def revenue_per_category(df: pd.DataFrame) -> pd.DataFrame:
+    return (
+        df.groupby("category", observed=True)
+        .agg(tot_rev_cat=("revenue", "sum"))
+        .sort_values("tot_rev_cat", ascending=False)
+        .reset_index())
 
 # Revenue per city - Where?
-# Top 3 cities
+def revenue_per_city(df: pd.DataFrame) -> pd.DataFrame:
+    return (
+        df.groupby("city", observed=True)
+        .agg(tot_rev_city=("revenue", "sum"))
+        .sort_values("tot_rev_city", ascending=False)
+        .reset_index())
 
 # Revenue per time - When?
