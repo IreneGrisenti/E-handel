@@ -30,3 +30,13 @@ def revenue_per_city(df: pd.DataFrame) -> pd.DataFrame:
         .reset_index())
 
 # Revenue per time - When?
+def revenue_per_month(df: pd.DataFrame) -> pd.DataFrame:
+
+    df = df.copy()
+    df["month"] = df["date"].dt.to_period("M").astype(str)
+
+    return (
+        df.groupby("month", observed=True)
+        .agg(rev_per_month=("revenue", "sum"))
+        .sort_values("month")
+        .reset_index())
