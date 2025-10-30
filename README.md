@@ -8,6 +8,7 @@ In the first 6 months of 2024:
 - **1401.11 sek** average order value.
 
 ### Visualization
+.
 ![alt text](images/fig_rev_per_cat.png)
 ![alt text](images/fig_rev_per_cit.png)
 ![alt text](images/fig_rev_per_month.png)
