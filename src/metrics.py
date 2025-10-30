@@ -31,7 +31,6 @@ def revenue_per_city(df: pd.DataFrame) -> pd.DataFrame:
 
 # Revenue per time - When?
 def revenue_per_month(df: pd.DataFrame) -> pd.DataFrame:
-
     df = df.copy()
     df["month"] = df["date"].dt.to_period("M").astype(str)
 
