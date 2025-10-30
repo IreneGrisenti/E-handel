@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 
 # Total revenue
@@ -9,7 +8,7 @@ def total_revenue(df: pd.DataFrame) -> float:
 def total_units(df: pd.DataFrame) -> int:
     return df["units"].sum()
 
-# Average order - AOV?
+# Average order value - AOV
 def average_order(df: pd.DataFrame) -> float:
     return round(total_revenue(df) / df["order_id"].nunique(), 2)
 

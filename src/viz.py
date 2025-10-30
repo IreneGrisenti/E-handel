@@ -2,49 +2,38 @@ import matplotlib.pyplot as plt
 from src.io_utils import *
 from src.metrics import *
 
-# Plot per categories
-def plot_per_category(df: pd.DataFrame):
-    fig, ax = plt.subplots(figsize=(7,5))
-    ax.bar(df["category"], df["revenue"], 
-           color="#6495ED", width=0.7)
-    ax.set_title("Revenue per category")
-    ax.set_xlabel("Category")
-    ax.set_ylabel("Revenue")
-    ax.grid(True, axis="y", alpha=0.5)
+# Function for bar plot
+def bar(ax, x, y, title, xlabel, ylabel, color, grid: bool = True):
+    ax.bar(x, y, color=color)
+    ax.set_title(title)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.grid(grid, axis="y", alpha=0.5)
     plt.xticks(rotation=45)
-    plt.tight_layout()
-    return fig
+    return ax
 
-def plot_per_city(df: pd.DataFrame):
-    fig, ax = plt.subplots(figsize=(7,5))
-    ax.bar(df["city"], df["revenue"], 
-           color="#4682B4", width=0.7)
-    ax.set_title("Revenue per city")
-    ax.set_xlabel("City")
-    ax.set_ylabel("Revenue")
-    ax.grid(True, axis="y", alpha=0.5)
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-    return fig
-
+# Function for line plots
 def line(ax, x, y, title, xlabel, ylabel, label=None, grid: bool = True):
-    ax.plot(x, y, marker="o", label=label)
+    ax.plot(x, y, marker="o", label=label, color="#6495ED")
     ax.set_title(title)
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
     ax.grid(grid, axis="y", alpha=0.5)
     return ax
 
+# Function for scatter plots
 def scatter(ax, x, y, title, xlabel, ylabel, grid: bool = True):
-    ax.scatter(x, y, alpha=0.5)
+    ax.scatter(x, y, alpha=0.5, color="#335DAA")
     ax.set_title(title)
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
     ax.grid(grid, alpha=0.5)
     return ax
 
-def box_p(ax, x, y, title, xlabel, grid: bool = True):
-    ax.boxplot(x, y, vert=False)
+# Function for box plots
+def box_p(ax, data, labels, title, xlabel, grid: bool = True):
+    ax.boxplot(data, vert=False)
+    ax.set_yticklabels(labels)
     ax.set_title(title)
     ax.set_xlabel(xlabel)
     ax.grid(grid, axis="x")
