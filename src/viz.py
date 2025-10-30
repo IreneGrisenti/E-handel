@@ -1,6 +1,4 @@
 import matplotlib.pyplot as plt
-from src.io_utils import *
-from src.metrics import *
 
 # Function for bar plot
 def bar(ax, x, y, title, xlabel, ylabel, color, grid: bool = True):
@@ -9,7 +7,6 @@ def bar(ax, x, y, title, xlabel, ylabel, color, grid: bool = True):
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
     ax.grid(grid, axis="y", alpha=0.5)
-    plt.xticks(rotation=45)
     return ax
 
 # Function for line plots
